@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comfort System Technology</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #eaeaea;
+    }
+
+    header {
+      background-color: #002b5c;
+      color: white;
+      text-align: center;
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark-mode header {
+      background-color: #1a1a1a;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+    }
+
+    .dark-mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #003366;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode nav {
+      background-color: #222;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    .section h2 {
+      font-size: 2.8em;
+      margin-bottom: 30px;
+      color: #003366;
+      text-align: center;
+    }
+
+    body.dark-mode .section h2 {
+      color: #ffcc00;
+    }
+
+    .section p {
+      font-size: 1.2em;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .services ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .services li {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #0077cc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      padding: 25px;
+      background: #f2f2f2;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .services li:hover {
+      transform: scale(1.05);
+      background: #0077cc;
+      color: white;
+    }
+
+    body.dark-mode .services li {
+      background: #1e1e1e;
+      color: #66ccff;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .contact-info div {
+      text-align: center;
+    }
+
+    .contact-info i {
+      font-size: 2.5em;
+      color: #003366;
+      margin-bottom: 10px;
+    }
+
+    body.dark-mode .contact-info i {
+      color: #ffcc00;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1.1em;
+    }
+
+    .contact-form button {
+      padding: 15px 30px;
+      background-color: #003366;
+      color: white;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #0055a5;
+    }
+
+    footer {
+      background-color: #002b5c;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    body.dark-mode footer {
+      background-color: #1a1a1a;
+    }
+
+    footer p {
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 768px) {
+      .services ul {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .services ul {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><i class="fas fa-fan"></i> Comfort System Technology</h1>
+    <p>Leading Provider of Air Conditioning & MEP Services in UAE</p>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <p>Comfort System Technology (CST) has been at the forefront of air conditioning, MEP contracting, and energy efficiency solutions for over 15 years...</p>
+  </section>
+
+  <section id="services" class="section services">
+    <h2>Our Services</h2>
+    <ul>
+      <li><i class="fas fa-cogs"></i> <strong>AC Installation & Maintenance</strong><br />Efficient and reliable air conditioning systems.</li>
+      <li><i class="fas fa-wrench"></i> <strong>MEP Contracting</strong><br />Expert services in MEP installations and maintenance.</li>
+      <li><i class="fas fa-home"></i> <strong>Smart Home Integration</strong><br />Home automation for convenience and energy savings.</li>
+      <li><i class="fas fa-sun"></i> <strong>Energy Efficiency</strong><br />Solutions to reduce energy use and costs.</li>
+      <li><i class="fas fa-drafting-compass"></i> <strong>Custom Ductwork</strong><br />Tailored duct systems for top performance.</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Our Projects</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1581090700227-1e8e17f9f030" alt="HVAC Installation" />
+      <img src="https://images.unsplash.com/photo-1620841057024-f571d79ea6ef" alt="MEP Team at Work" />
+      <img src="https://images.unsplash.com/photo-1628253745932-b6315c4e7203" alt="Completed Project" />
+      <img src="https://images.unsplash.com/photo-1603366615917-1fa6a3805f59" alt="Smart Home Panel" />
+    </div>
+  </section>
+
+  <section id="testimonials" class="section">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonials">
+      <p>"CST has been a trusted partner..." – <strong>Ahmed Al-Sayed</strong></p>
+      <p>"We highly recommend Comfort System..." – <strong>Sarah Johnson</strong></p>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <div><i class="fas fa-envelope"></i><p><a href="mailto:cst.office2@gmail.com">cst.office2@gmail.com</a></p></div>
+      <div><i class="fas fa-phone"></i><p><a href="tel:+971508532388">+971 50 853 2388</a></p></div>
+      <div><i class="fab fa-instagram"></i><p><a href="https://www.instagram.com/cst_cont/" target="_blank">@cst_cont</a></p></div>
+    </div>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Comfort System Technology. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.querySelector('.dark-mode-toggle');
+      btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    }
+  </script>
+
+</body>
+</html>
