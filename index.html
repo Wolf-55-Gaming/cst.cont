@@ -2,11 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Comfort System Technology</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #f8f9fa;
+      --text: #333;
+      --primary: #003366;
+      --secondary: #0077cc;
+      --card: #f2f2f2;
+    }
+
+    .dark-mode {
+      --bg: #121212;
+      --text: #eee;
+      --primary: #1e1e1e;
+      --secondary: #3399ff;
+      --card: #1f1f1f;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,55 +31,48 @@
 
     body {
       font-family: 'Outfit', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
+      background-color: var(--bg);
+      color: var(--text);
       transition: background-color 0.3s, color 0.3s;
     }
 
-    body.dark-mode {
-      background-color: #121212;
-      color: #eaeaea;
-    }
-
     header {
-      background-color: #002b5c;
+      background-color: var(--primary);
       color: white;
       text-align: center;
       padding: 120px 0;
       position: relative;
-      overflow: hidden;
-    }
-
-    body.dark-mode header {
-      background-color: #1a1a1a;
     }
 
     header h1 {
-      font-size: 3.5em;
+      font-size: 2.5em;
       margin-bottom: 20px;
       font-weight: 700;
     }
 
     header p {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-bottom: 40px;
     }
 
-    .dark-mode-toggle {
+    .night-toggle {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: none;
+      background: white;
+      color: var(--primary);
       border: none;
-      color: white;
-      font-size: 24px;
+      padding: 8px 16px;
+      font-size: 0.9em;
+      border-radius: 8px;
       cursor: pointer;
+      z-index: 999;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      background: #003366;
+      background: var(--primary);
       padding: 15px;
       position: sticky;
       top: 0;
@@ -71,117 +80,92 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
-    body.dark-mode nav {
-      background-color: #222;
-    }
-
     nav a {
       color: white;
-      margin: 0 30px;
+      margin: 0 20px;
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #ffcc00;
+      color: var(--secondary);
     }
 
     .section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 20px;
+      padding: 60px 20px;
     }
 
     .section h2 {
-      font-size: 2.8em;
-      margin-bottom: 30px;
-      color: #003366;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: var(--primary);
       text-align: center;
-    }
-
-    body.dark-mode .section h2 {
-      color: #ffcc00;
     }
 
     .section p {
-      font-size: 1.2em;
+      font-size: 1em;
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     .services ul {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      text-align: center;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      list-style: none;
     }
 
     .services li {
-      font-size: 1.3em;
+      font-size: 1em;
       font-weight: 600;
-      color: #0077cc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: var(--secondary);
+      background: var(--card);
       border-radius: 8px;
-      padding: 25px;
-      background: #f2f2f2;
-      transition: all 0.3s ease;
+      padding: 20px;
+      transition: all 0.3s;
       cursor: pointer;
     }
 
     .services li:hover {
-      transform: scale(1.05);
-      background: #0077cc;
+      background: var(--secondary);
       color: white;
-    }
-
-    body.dark-mode .services li {
-      background: #1e1e1e;
-      color: #66ccff;
     }
 
     .contact-info {
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 50px;
-    }
-
-    .contact-info div {
-      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
     }
 
     .contact-info i {
-      font-size: 2.5em;
-      color: #003366;
-      margin-bottom: 10px;
-    }
-
-    body.dark-mode .contact-info i {
-      color: #ffcc00;
+      font-size: 2em;
+      color: var(--primary);
+      margin-bottom: 5px;
     }
 
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 10px;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
       border: 1px solid #ccc;
-      font-size: 1.1em;
+      font-size: 1em;
+      background: var(--card);
+      color: var(--text);
     }
 
     .contact-form button {
-      padding: 15px 30px;
-      background-color: #003366;
+      padding: 12px 24px;
+      background-color: var(--primary);
       color: white;
       font-weight: 600;
       border-radius: 10px;
-      cursor: pointer;
       border: none;
-      transition: background-color 0.3s ease;
+      cursor: pointer;
     }
 
     .contact-form button:hover {
@@ -189,30 +173,46 @@
     }
 
     footer {
-      background-color: #002b5c;
+      background-color: var(--primary);
       color: white;
       text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
-    }
-
-    body.dark-mode footer {
-      background-color: #1a1a1a;
+      padding: 30px 20px;
     }
 
     footer p {
-      font-size: 1.2em;
+      font-size: 1em;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      height: 150px;
+    }
+
+    .testimonials p {
+      font-style: italic;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    a {
+      color: inherit;
     }
 
     @media (max-width: 768px) {
-      .services ul {
-        grid-template-columns: 1fr 1fr;
+      nav {
+        flex-wrap: wrap;
       }
-    }
 
-    @media (max-width: 480px) {
-      .services ul {
-        grid-template-columns: 1fr;
+      nav a {
+        margin: 10px;
       }
     }
   </style>
@@ -220,9 +220,9 @@
 <body>
 
   <header>
+    <button class="night-toggle" onclick="toggleNightMode()">🌙 Night</button>
     <h1><i class="fas fa-fan"></i> Comfort System Technology</h1>
     <p>Leading Provider of Air Conditioning & MEP Services in UAE</p>
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
   </header>
 
   <nav>
@@ -241,11 +241,11 @@
   <section id="services" class="section services">
     <h2>Our Services</h2>
     <ul>
-      <li><i class="fas fa-cogs"></i> <strong>AC Installation & Maintenance</strong><br />Efficient and reliable air conditioning systems.</li>
-      <li><i class="fas fa-wrench"></i> <strong>MEP Contracting</strong><br />Expert services in MEP installations and maintenance.</li>
-      <li><i class="fas fa-home"></i> <strong>Smart Home Integration</strong><br />Home automation for convenience and energy savings.</li>
-      <li><i class="fas fa-sun"></i> <strong>Energy Efficiency</strong><br />Solutions to reduce energy use and costs.</li>
-      <li><i class="fas fa-drafting-compass"></i> <strong>Custom Ductwork</strong><br />Tailored duct systems for top performance.</li>
+      <li><i class="fas fa-cogs"></i> AC Installation & Maintenance</li>
+      <li><i class="fas fa-wrench"></i> MEP Contracting</li>
+      <li><i class="fas fa-home"></i> Smart Home Integration</li>
+      <li><i class="fas fa-sun"></i> Energy Efficiency Solutions</li>
+      <li><i class="fas fa-drafting-compass"></i> Custom Ductwork & Fabrication</li>
     </ul>
   </section>
 
@@ -262,8 +262,8 @@
   <section id="testimonials" class="section">
     <h2>What Our Clients Say</h2>
     <div class="testimonials">
-      <p>"CST has been a trusted partner..." – <strong>Ahmed Al-Sayed</strong></p>
-      <p>"We highly recommend Comfort System..." – <strong>Sarah Johnson</strong></p>
+      <p>"CST has been a trusted partner for our HVAC systems..." - <strong>Ahmed Al-Sayed</strong></p>
+      <p>"We highly recommend Comfort System Technology..." - <strong>Sarah Johnson</strong></p>
     </div>
   </section>
 
@@ -288,12 +288,9 @@
   </footer>
 
   <script>
-    function toggleDarkMode() {
+    function toggleNightMode() {
       document.body.classList.toggle('dark-mode');
-      const btn = document.querySelector('.dark-mode-toggle');
-      btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     }
   </script>
-
 </body>
 </html>
